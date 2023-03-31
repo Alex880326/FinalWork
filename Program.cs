@@ -20,5 +20,14 @@ class Program
                 j++;
             }
         }
+        Array.Resize(ref newArray, j);
+
+        Console.WriteLine("Результат:");
+        foreach (string s in newArray)
+        {
+            Console.WriteLine(s);
+        }
+
+        Console.ReadKey();
     }
 }
