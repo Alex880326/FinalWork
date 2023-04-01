@@ -1,33 +1,37 @@
 ﻿using System;
 
-class Program
+namespace ArraysExample
 {
-    static void Main()
+    class Program
     {
-        Console.WriteLine("Введите элементы массива, разделяя их запятой:");
-        string input = Console.ReadLine();
-
-        string[] array = input.Split(',');
-        string[] newArray = new string[array.Length];
-
-        int j = 0;
-
-        for (int i = 0; i < array.Length; i++)
+        static void Main(string[] args)
         {
-            if (array[i].Length <= 3)
+            Console.WriteLine("Введите элементы массива через запятую:");
+            string input = Console.ReadLine();
+            string[] array = input.Split(',');
+
+            string[] shortStrings = new string[array.Length];
+            int index = 0;
+
+            for (int i = 0; i < array.Length; i++)
             {
-                newArray[j] = array[i];
-                j++;
+                if (array[i].Length <= 3)
+                {
+                    shortStrings[index] = array[i];
+                    index++;
+                }
             }
-        }
-        Array.Resize(ref newArray, j);
 
-        Console.WriteLine("Результат:");
-        foreach (string s in newArray)
-        {
-            Console.WriteLine(s);
+            Console.Write("[");
+            for (int i = 0; i < index; i++)
+            {
+                Console.Write(shortStrings[i]);
+                if (i != index - 1)
+                {
+                    Console.Write(", ");
+                }
+            }
+            Console.WriteLine("]");
         }
-
-        Console.ReadKey();
     }
-}
+} 
